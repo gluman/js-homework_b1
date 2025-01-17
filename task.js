@@ -1,10 +1,11 @@
 const dropdownLists = document.getElementsByClassName('dropdown__list');
 const dropdownValues = document.getElementsByClassName('dropdown__value');
 
-// Проходим по каждому элементу 'dropdown__value' и добавляем обработчик событий
+
 for (let i = 0; i < dropdownValues.length; i++) {
-    dropdownValues[i].addEventListener('click', () => {
-        // Проверяем и изменяем класс текущего списка dropdown__list
+    dropdownValues[i].addEventListener('click', (event) => {
+    event.preventDefault();
+    
         for (let y = 0; y < dropdownLists.length; y++) {
             if (dropdownLists[y].classList.contains('dropdown__list_active')) {
                 dropdownLists[y].classList.remove('dropdown__list_active');
@@ -14,3 +15,12 @@ for (let i = 0; i < dropdownValues.length; i++) {
         }
     });
 }
+
+// $(document).ready(function() {
+//     $('a').click(function(event) {
+//         event.preventDefault();
+//         var dropdown = $(this).closest('.dropdown'); // Находим родительский контейнер dropdown
+//         var selectedItem = $(this).text(); // Получаем текст выбранной ссылки
+//         dropdown.find('.selected').text(selectedItem); // Обновляем текст в dropdown
+//     });
+// });
